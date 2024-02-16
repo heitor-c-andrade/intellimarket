@@ -33,7 +33,7 @@ with st.sidebar:
                 for component in components:
                     st.markdown(f"*{component}*")  # Exibe cada componente em itálico
             else:
-                st.write("    No Found")  # Mensagem exibida se não houver componentes
+                st.markdown("*Not Found*")  # Mensagem exibida em itálico se não houver componentes
 
     elif option == 'State':
         estados = ['Choose a state...'] + sorted(load_estados())
