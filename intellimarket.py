@@ -1,5 +1,5 @@
 import streamlit as st
-from db_functions import load_empresas, load_segmentos, load_produtos, filter_by_segmento, filter_by_produto, load_segment_translation, load_estados, filter_by_estado
+from db_functions import load_empresas, load_segmentos, load_produtos, filter_by_segmento, filter_by_produto, load_segment_translation, load_estados, filter_by_estado, load_componentes_por_produto
 from rendering_functions import display_table, display_map
 
 # Carregar os mapeamentos ao iniciar o aplicativo
@@ -22,6 +22,13 @@ with st.sidebar:
     elif option == 'Product':
         products = ['Choose a product...'] + sorted(load_produtos())
         chosen_product = st.selectbox('Choose the product:', products)
+        
+        # Carregar e exibir componentes se um produto for selecionado
+        if chosen_product != 'Choose a product...':
+            components = load_componentes_por_produto(chosen_product)
+            st.write('Components:')  # Título para a lista de componentes
+            for component in components:
+                st.write(component)  # Exibe cada componente na barra lateral
 
     elif option == 'State':
         estados = ['Choose a state...'] + sorted(load_estados())
@@ -42,3 +49,4 @@ if view_option == 'Table':
     display_table(displayed_df)
 elif view_option == 'Map':
     display_map(displayed_df)
+    

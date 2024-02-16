@@ -50,6 +50,16 @@ def load_estados():
     df = query_db(query)
     return df['Estado'].tolist()
 
+def load_componentes_por_produto(produto_ingles):
+    query = """
+    SELECT "Nome Componente"
+    FROM Componentes
+    WHERE "Produto Ingles" = ?
+    ORDER BY "Nome Componente"
+    """
+    df = filter_db(query, produto_ingles)
+    return df['Nome Componente'].tolist()
+
 # Função para filtrar empresas por segmento
 
 def filter_by_segmento(segmento):
