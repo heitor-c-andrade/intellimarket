@@ -31,7 +31,7 @@ with st.sidebar:
             st.write('Components:')  # Título para a lista de componentes
             if components:  # Se a lista de componentes não estiver vazia
                 for component in components:
-                    st.write(f"    {component}")  # Adiciona indentação antes de cada componente
+                    st.markdown(f"*{component}*")  # Exibe cada componente em itálico
             else:
                 st.write("    No Found")  # Mensagem exibida se não houver componentes
 
