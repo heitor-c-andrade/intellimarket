@@ -1,1 +1,1 @@
-web: sh setup.sh && streamlit run intellimonitor.py
+web: sh setup.sh && streamlit run intellimarket.py
